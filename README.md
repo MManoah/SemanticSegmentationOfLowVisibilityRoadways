@@ -31,3 +31,4 @@ Here are some notes about the notebook
 	* Note how in both of the lists GOPR0475_frame_000041 comes first followed by GOPR0475_frame_000049 (order is the same). A way to ensure this order is always kept is to do .sort() for each list in this cell. For Windows machines however this order should automatically be the default. 
 4. The data generator in **cell 10** is used for both the training and validation sets. For the training set data augmentation is applied as seen in the **__data_generation** function in the class. 
 5. While the training is happening, the logs for each condition is stored in {condition}/logs/logs.csv. The weights are stored in {condition}/{condition}-weights.h5, only the epoch with the highest validation accuracy weights are saved. There are also logs stored to use with TensorBoard located in {condition}/logs.
+6. I trained the models mostly using Paperspace they have free GPUs that can execute in the background for up to 6 hours.

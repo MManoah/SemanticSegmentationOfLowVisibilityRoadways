@@ -23,12 +23,12 @@ Depending on which cloud provider you are using this can vary. I recommend [Pape
 # Notebook
 Here are some notes about the notebook
 
-1. Make sure the GPU is being used otherwise the training will take an extended period of time. This is done in **cell 3**.
+1. Make sure the GPU is being used. This is done in **cell 3**.
 2. In **cell 4**, specify the path to where the root of the dataset is located in the **dataset_path** variable. Also specify the path to the class_dict.csv file in the variable **classes_csv_path**.
 3. **IMPORTANT NOTE:** In **cell 5**, multiple lists are created with paths to the images. The RGB and Annotated paths lists matching depends on the OS. The lists **must** be in the same order of the path name, ex:
 	* fog_training_rgb = [**GOPR0475_frame_000041_rgb_anon.png**, **GOPR0475_frame_000049_rgb_anon.png**]
 	* fog_training_annotated = [**GOPR0475_frame_000041_gt_labelColor.png**, **GOPR0475_frame_000049_gt_labelColor.png**]
 	* Note how in both of the lists GOPR0475_frame_000041 comes first followed by GOPR0475_frame_000049 (order is the same). A way to ensure this order is always kept is to do .sort() for each list in this cell. For Windows machines however this order should automatically be the default. 
-4. The data generator in **cell 10** is used for both the training and validation sets. For the training set data augmentation is applied as seen in the **__data_generation** function in the class. 
-5. While the training is happening, the logs for each condition is stored in {condition}/logs/logs.csv. The weights are stored in {condition}/{condition}-weights.h5, only the epoch with the highest validation accuracy weights are saved. There are also logs stored to use with TensorBoard located in {condition}/logs.
+4. The data generator in **cell 10** is used for both the training and validation sets. For the training set data augmentation is applied using the [albumentations](https://github.com/albumentations-team/albumentations) library as seen in the **__data_generation** function in the class. 
+5. While the training is happening, the logs for each condition is stored in {condition}/logs/logs.csv. The model checkpoints are stored in {condition}/{condition}-weights, only the epoch with the lowest validation loss are saved. There are also logs stored to use with TensorBoard located in {condition}/logs.
 6. I trained the models mostly using Paperspace they have free GPUs that can execute in the background for up to 6 hours.
